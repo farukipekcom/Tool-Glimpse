@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {getCategories} from "@/lib/categories";
 
-export async function CategorySidebar() {
+export async function CategoryNav() {
   const categories = await getCategories();
 
   return (

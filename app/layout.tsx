@@ -2,6 +2,8 @@ import type {Metadata} from "next";
 import {Outfit, Plus_Jakarta_Sans} from "next/font/google";
 import "./globals.css";
 import {Sidebar} from "@/components/sidebar/sidebar";
+import {cn} from "@/lib/utils";
+import {Topbar} from "@/components/topbar/topbar";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -18,10 +20,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfit.variable} ${plusJakarta.variable} antialiased`}>
-      <body className="min-h-dvh flex flex-col">
+    <html lang="en" className={cn("antialiased", outfit.variable, plusJakarta.variable)}>
+      <body className="min-h-dvh flex">
         <Sidebar />
-        {children}
+        <div className="flex min-w-0 flex-1 flex-col">
+          <Topbar />
+          {children}
+        </div>
       </body>
     </html>
   );
