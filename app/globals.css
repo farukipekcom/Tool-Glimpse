@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: #e5e5e5;
   --font-sans: var(--font-plus-jakarta); /* body, buttons, cards */
   --font-display: var(--font-outfit); /* logo, H1 */
 }
