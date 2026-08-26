@@ -11,7 +11,7 @@ export type Tool = {
   pricing: Pricing[];
   websiteUrl: string;
   features: string[];
-  coverImage: string;
+  coverImage: "/tool-1.png";
 };
 
 export const tools: Tool[] = [
@@ -26,7 +26,7 @@ export const tools: Tool[] = [
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/orbitkit",
     features: ["Text-to-video drafts", "Brand kit presets", "Export for social sizes"],
-    coverImage: "/covers/orbitkit.jpg",
+    coverImage: "/tool-1.png",
   },
   {
     slug: "ux-pilot",
@@ -39,33 +39,33 @@ export const tools: Tool[] = [
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/ux-pilot",
     features: ["Prompt to wireframe", "Figma-friendly components", "Iterate on real user flows"],
-    coverImage: "/covers/ux-pilot.jpg",
+    coverImage: "/tool-1.png",
   },
   {
     slug: "mailcraft",
     name: "Mailcraft",
     tagline: "Newsletters that don’t look like templates.",
     description: "Write, design, and send newsletters with a small set of opinionated blocks.",
-    category: "newsletter",
+    category: "design",
     type: "Email",
     tags: ["Subscription"],
     pricing: ["subscription"],
     websiteUrl: "https://example.com/mailcraft",
     features: ["Block editor", "Audience segments", "Plain-text fallback"],
-    coverImage: "/covers/mailcraft.jpg",
+    coverImage: "/tool-1.png",
   },
   {
     slug: "clipnote",
     name: "Clipnote",
     tagline: "Cut podcasts without a timeline headache.",
     description: "Drop an audio file, mark the good parts, export a clean episode.",
-    category: "audio",
+    category: "design",
     type: "Editor",
     tags: ["Free", "Subscription"],
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/clipnote",
     features: ["Silence skip", "Multitrack-lite", "Show notes draft"],
-    coverImage: "/covers/clipnote.jpg",
+    coverImage: "/tool-1.png",
   },
 ];
 
