@@ -11,7 +11,7 @@ export type Tool = {
   pricing: Pricing[];
   websiteUrl: string;
   features: string[];
-  coverImage: "/tool-1.png";
+  coverImage: string;
 };
 
 export const tools: Tool[] = [
@@ -26,7 +26,7 @@ export const tools: Tool[] = [
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/orbitkit",
     features: ["Text-to-video drafts", "Brand kit presets", "Export for social sizes"],
-    coverImage: "/tool-1.png",
+    coverImage: "/tool-1.jpg",
   },
   {
     slug: "ux-pilot",
@@ -39,7 +39,7 @@ export const tools: Tool[] = [
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/ux-pilot",
     features: ["Prompt to wireframe", "Figma-friendly components", "Iterate on real user flows"],
-    coverImage: "/tool-1.png",
+    coverImage: "/tool-1.jpg",
   },
   {
     slug: "mailcraft",
@@ -52,7 +52,7 @@ export const tools: Tool[] = [
     pricing: ["subscription"],
     websiteUrl: "https://example.com/mailcraft",
     features: ["Block editor", "Audience segments", "Plain-text fallback"],
-    coverImage: "/tool-1.png",
+    coverImage: "/tool-1.jpg",
   },
   {
     slug: "clipnote",
@@ -65,7 +65,7 @@ export const tools: Tool[] = [
     pricing: ["free", "subscription"],
     websiteUrl: "https://example.com/clipnote",
     features: ["Silence skip", "Multitrack-lite", "Show notes draft"],
-    coverImage: "/tool-1.png",
+    coverImage: "/tool-1.jpg",
   },
 ];
 
