@@ -6,7 +6,7 @@ import type {Category} from "@/lib/categories";
 import {cn} from "@/lib/utils";
 import {CategoryIcon} from "./category-icon";
 
-const linkClass = "flex w-full min-w-fit items-center gap-2 px-2 py-1 text-sm hover:bg-amber-200";
+const linkClass = "flex w-full min-w-fit items-center gap-2 px-2 py-1 text-sm hover:bg-amber-200 hover:bg-[#EAE4FF] rounded-sm";
 
 export function CategoryNavLinks({categories}: {categories: Category[]}) {
   const searchParams = useSearchParams();
@@ -19,7 +19,7 @@ export function CategoryNavLinks({categories}: {categories: Category[]}) {
         return (
           <li key={category.slug} className="w-full">
             <Link
-              href={isActive ? "/" : `/?category=${category.slug}`}
+              href={isActive ? "/" : `/${category.slug}`}
               className={cn(linkClass, isActive && "bg-amber-200")}
               aria-current={isActive ? "page" : undefined}>
               {category.icon ? <CategoryIcon name={category.icon} className="size-4 shrink-0" /> : null}

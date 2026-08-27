@@ -15,7 +15,7 @@ export function MobileMenu({children}: {children: React.ReactNode}) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/40 lg:hidden" />
-        <Dialog.Popup className="fixed inset-y-0 right-0 z-50 flex w-68 flex-col bg-background shadow-lg outline-none lg:hidden">
+        <Dialog.Popup className="fixed inset-y-0 right-0 z-50 flex w-68 flex-col bg-white shadow-lg outline-none lg:hidden">
           <div className="flex h-14 items-center justify-between border-b px-4">
             <Dialog.Title className="text-sm font-medium">Categories</Dialog.Title>
             <Dialog.Close render={<Button variant="ghost" size="icon" />} aria-label="Close menu">

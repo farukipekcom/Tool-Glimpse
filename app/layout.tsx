@@ -4,6 +4,7 @@ import "./globals.css";
 import {Sidebar} from "@/components/sidebar/sidebar";
 import {cn} from "@/lib/utils";
 import {Topbar} from "@/components/topbar/topbar";
+import Footer from "@/components/footer/footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -26,6 +27,7 @@ export default function RootLayout({children}: LayoutProps<"/">) {
         <div className="flex min-w-0 flex-1 flex-col">
           <Topbar />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

@@ -12,6 +12,7 @@ export type Tool = {
   websiteUrl: string;
   features: string[];
   coverImage: string;
+  logo: string;
 };
 
 export const tools: Tool[] = [
@@ -27,6 +28,7 @@ export const tools: Tool[] = [
     websiteUrl: "https://example.com/orbitkit",
     features: ["Text-to-video drafts", "Brand kit presets", "Export for social sizes"],
     coverImage: "/tool-1.jpg",
+    logo: "/ux-pilot.jpg",
   },
   {
     slug: "ux-pilot",
@@ -40,6 +42,7 @@ export const tools: Tool[] = [
     websiteUrl: "https://example.com/ux-pilot",
     features: ["Prompt to wireframe", "Figma-friendly components", "Iterate on real user flows"],
     coverImage: "/tool-1.jpg",
+    logo: "/ux-pilot.jpg",
   },
   {
     slug: "mailcraft",
@@ -53,6 +56,7 @@ export const tools: Tool[] = [
     websiteUrl: "https://example.com/mailcraft",
     features: ["Block editor", "Audience segments", "Plain-text fallback"],
     coverImage: "/tool-1.jpg",
+    logo: "/ux-pilot.jpg",
   },
   {
     slug: "clipnote",
@@ -66,6 +70,7 @@ export const tools: Tool[] = [
     websiteUrl: "https://example.com/clipnote",
     features: ["Silence skip", "Multitrack-lite", "Show notes draft"],
     coverImage: "/tool-1.jpg",
+    logo: "/ux-pilot.jpg",
   },
 ];
 
@@ -79,4 +84,13 @@ export async function getTools(category?: string) {
 
 export async function getToolBySlug(slug: string) {
   return tools.find((tool) => tool.slug === slug) ?? null;
+}
+export async function getRelatedTools(slug: string, category: string) {
+  return tools.filter((item) => item.category === category && item.slug !== slug);
+}
+export async function getNewTools(excludeSlug?: string, limit = 12) {
+  return tools
+    .filter((item) => item.slug !== excludeSlug)
+    .slice(-limit)
+    .reverse();
 }

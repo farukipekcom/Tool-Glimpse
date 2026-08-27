@@ -7,7 +7,7 @@ import {CategoryNav} from "../sidebar/category-nav";
 import {MobileMenu} from "./mobile-menu";
 export function Topbar() {
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center gap-3 border-b px-6 lg:h-20 lg:px-6">
+    <header className="bg-white sticky top-0 z-10 flex h-14 items-center gap-3 border-b px-6 lg:h-20 lg:px-6">
       <Link href="/" className="lg:hidden" aria-label="ToolGlimpse home">
         <Logo />
       </Link>
