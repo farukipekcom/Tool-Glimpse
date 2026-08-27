@@ -30,7 +30,7 @@ export function ToolCard({tool}: {tool: Tool}) {
       </Link>
       <div className="pt-2 flex items-center justify-between">
         <h3 className="text-base font-medium">{tool.name}</h3>
-        <p className="text-sm">{tool.type}</p>
+        <p className="text-sm">{tool.features}</p>
       </div>
     </article>
   );

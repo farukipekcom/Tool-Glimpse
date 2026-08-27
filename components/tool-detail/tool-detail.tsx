@@ -43,7 +43,17 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
         </div>
         <div className="mt-6">
           <ul className="flex items-center gap-2">
-            {tool.features.map((feature) => (
+            {tool.pricing.map((feature) => (
+              <Badge variant="secondary" className="bg-white text-xs" key={feature}>
+                {feature}
+              </Badge>
+            ))}
+            {tool.subCategory.map((feature) => (
+              <Badge variant="secondary" className="bg-white text-xs" key={feature}>
+                {feature}
+              </Badge>
+            ))}
+            {tool.platforms.map((feature) => (
               <Badge variant="secondary" className="bg-white text-xs" key={feature}>
                 {feature}
               </Badge>
@@ -54,7 +64,7 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
       <section className="mt-6 w-full flex flex-col lg:flex-row gap-6">
         <div className="bg-white lg:w-9/12 border border-border p-5 rounded-md flex flex-col gap-4">
           <h2 className="font-semibold text-sm">About</h2>
-          {tool.description}
+          <div dangerouslySetInnerHTML={{__html: tool.description}} className="flex flex-col gap-2" />
         </div>
         <div className="bg-white lg:w-3/12 border border-border p-5 rounded-md flex flex-col gap-4">
           <h2 className="font-semibold text-sm">SIMILAR TOOLS</h2>
@@ -86,7 +96,7 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
                 <Image src={item.logo} alt="" width={40} height={40} className="rounded-md" />
                 <div>
                   <h4 className="text-sm font-semibold">{item.name}</h4>
-                  <p className="text-xs font-medium text-gray-500">{item.type}</p>
+                  <p className="text-xs font-medium text-gray-500">{item.features}</p>
                 </div>
               </Link>
             ))}

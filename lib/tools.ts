@@ -1,74 +1,64 @@
-export type Pricing = "free" | "subscription";
+export type Pricing = "Free" | "Paid" | "Freemium" | "One-time";
+export type Platform = "Web" | "Mac" | "Windows" | "IOS" | "Android";
 
 export type Tool = {
   slug: string;
   name: string;
+  category: string;
+  subCategory: string[];
+  websiteUrl: string;
+  platforms: Platform[];
+  pricing: Pricing[];
   tagline: string;
   description: string;
-  category: string;
-  type: string;
-  tags: string[];
-  pricing: Pricing[];
-  websiteUrl: string;
-  features: string[];
+  features: string;
   coverImage: string;
   logo: string;
 };
 
 export const tools: Tool[] = [
   {
-    slug: "orbitkit",
-    name: "OrbitKit",
+    slug: "beyond-ui",
+    name: "Beyond UI",
+    category: "design",
+    subCategory: ["Design Systems & Kits", "UI Kits"],
+    websiteUrl: "https://www.beyondui.design/",
+    platforms: ["Web", "Mac"],
+    pricing: ["Free", "Paid"],
     tagline: "Create AI-powered videos quickly from text.",
-    description: "Ideal for marketing and content creators. Generate short videos from a script without a timeline editor.",
+    description:
+      "Streamline your design process with 9,000+ Figma components tailored for SaaS applications. Beyond UI offers a comprehensive Figma UI kit that includes 9,000+ components, 500+ customizable sections, and templates tailored to various industries. Designed for efficiency, it supports native Figma variables and auto-layout, enabling rapid design and prototyping, complete with a built-in dark mode feature.",
+    features: "Design Tool",
+    coverImage: "/tool-1.jpg",
+    logo: "/ux-pilot.jpg",
+  },
+  {
+    slug: "doppio",
+    name: "Doppio",
     category: "design",
-    type: "UI Component",
-    tags: ["Free", "Subscription"],
-    pricing: ["free", "subscription"],
-    websiteUrl: "https://example.com/orbitkit",
-    features: ["Text-to-video drafts", "Brand kit presets", "Export for social sizes"],
+    subCategory: ["Design Systems & Kits", "UI Kits"],
+    websiteUrl: "https://www.beyondui.design/",
+    platforms: ["Web"],
+    pricing: ["Free", "Paid"],
+    tagline: "Create AI-powered videos quickly from text.",
+    description:
+      "When it's time When its time to show off those perfectly pushed pixels, dont settle for deca energy.  Doppio turns your designs into motion reels impossible to ignore. Drop in your designs, pick a template, and tweak everything from composition to animation — all in the browser. No motion software or experience required.",
+    features: "Motion Templates",
     coverImage: "/tool-1.jpg",
     logo: "/ux-pilot.jpg",
   },
   {
-    slug: "ux-pilot",
-    name: "UX Pilot",
-    tagline: "AI UX Prototyping",
-    description: "AI-driven design tool for rapid prototyping and iteration. Build web-app flows and high-quality wireframes in minutes.",
+    slug: "motioner",
+    name: "Motioner",
     category: "design",
-    type: "UI Component",
-    tags: ["Free", "Subscription", "Figma", "Figma Variables", "Dark mode", "Figma AutoLayout", "Figma Variants"],
-    pricing: ["free", "subscription"],
-    websiteUrl: "https://example.com/ux-pilot",
-    features: ["Prompt to wireframe", "Figma-friendly components", "Iterate on real user flows"],
-    coverImage: "/tool-1.jpg",
-    logo: "/ux-pilot.jpg",
-  },
-  {
-    slug: "mailcraft",
-    name: "Mailcraft",
-    tagline: "Newsletters that don’t look like templates.",
-    description: "Write, design, and send newsletters with a small set of opinionated blocks.",
-    category: "newsletter",
-    type: "Email",
-    tags: ["Subscription"],
-    pricing: ["subscription"],
-    websiteUrl: "https://example.com/mailcraft",
-    features: ["Block editor", "Audience segments", "Plain-text fallback"],
-    coverImage: "/tool-1.jpg",
-    logo: "/ux-pilot.jpg",
-  },
-  {
-    slug: "clipnote",
-    name: "Clipnote",
-    tagline: "Cut podcasts without a timeline headache.",
-    description: "Drop an audio file, mark the good parts, export a clean episode.",
-    category: "audio",
-    type: "Editor",
-    tags: ["Free", "Subscription"],
-    pricing: ["free", "subscription"],
-    websiteUrl: "https://example.com/clipnote",
-    features: ["Silence skip", "Multitrack-lite", "Show notes draft"],
+    subCategory: ["Design Systems & Kits", "UI Kits"],
+    websiteUrl: "https://motioner.app/",
+    platforms: ["Web"],
+    pricing: ["Freemium"],
+    tagline: "Design your professional motion project easily.",
+    description:
+      "Motioner provides a powerful workspace for motion graphics professionals, enabling them to open video frames, add layers, and keyframe properties with comprehensive control and clarity. The platform supports vector editing, auto-layout features, rich text capabilities, and offers a freemium model to get started easily.",
+    features: "Motion Graphics Editor",
     coverImage: "/tool-1.jpg",
     logo: "/ux-pilot.jpg",
   },
