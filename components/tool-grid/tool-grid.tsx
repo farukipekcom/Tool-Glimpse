@@ -3,7 +3,7 @@ import type {Tool} from "@/lib/tools";
 
 export function ToolGrid({tools, emptyMessage = "No tools yet."}: {tools: Tool[]; emptyMessage?: string}) {
   if (tools.length === 0) {
-    return <p className="text-sm text-muted-foreground">{emptyMessage}</p>;
+    return <p className="text-sm text-muted-foreground font-medium">{emptyMessage}</p>;
   }
 
   return (

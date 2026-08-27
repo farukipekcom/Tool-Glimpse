@@ -74,12 +74,15 @@ export const tools: Tool[] = [
   },
 ];
 
-export async function getTools(category?: string) {
-  if (!category) {
-    return tools;
+export async function getTools(options?: {category?: string; q?: string}) {
+  let result = options?.category ? tools.filter((tool) => tool.category === options.category) : tools;
+  const q = options?.q?.trim().toLowerCase();
+  if (q) {
+    result = result.filter(
+      (tool) => tool.name.toLowerCase().includes(q) || tool.tagline.toLowerCase().includes(q) || tool.description.toLowerCase().includes(q),
+    );
   }
-
-  return tools.filter((tool) => tool.category === category);
+  return result;
 }
 
 export async function getToolBySlug(slug: string) {

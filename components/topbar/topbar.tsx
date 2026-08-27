@@ -11,15 +11,15 @@ export function Topbar() {
       <Link href="/" className="lg:hidden" aria-label="ToolGlimpse home">
         <Logo />
       </Link>
-
-      <Field className="min-w-0 flex-1 lg:w-90 lg:flex-none">
-        <InputGroup className="rounded-full font-sans">
-          <InputGroupInput placeholder="Search tools.." />
+      <form action="/" className="min-w-0 flex-1 lg:w-90 lg:flex-none">
+        <InputGroup className="rounded-full">
+          <InputGroupInput name="q" type="search" placeholder="Search tools.." />
           <InputGroupAddon align="inline-start">
             <SearchIcon />
           </InputGroupAddon>
         </InputGroup>
-      </Field>
+      </form>
+
       <MobileMenu>
         <CategoryNav />
       </MobileMenu>

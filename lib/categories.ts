@@ -11,7 +11,7 @@ export const categories: Category[] = [
   {slug: "marketing", name: "Marketing", icon: "megaphone"},
   {slug: "video", name: "Video", icon: "clapperboard"},
   {slug: "e-commerce", name: "E-Commerce", icon: "shoppingBag"},
-  {slug: "social-media", name: "Social Media", icon: "share2"},
+  {slug: "social-media", name: "Social Mia", icon: "share2"},
   {slug: "coding", name: "Coding", icon: "code"},
   {slug: "writing", name: "Writing", icon: "penLine"},
   {slug: "audio", name: "Audio", icon: "audioLines"},

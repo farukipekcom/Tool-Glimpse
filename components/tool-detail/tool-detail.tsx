@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import {ArrowUpRight, ExternalLink} from "lucide-react";
+import {ArrowUpRight} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
-import {buttonVariants} from "@/components/ui/button";
 import {categories} from "@/lib/categories";
-import type {Pricing, Tool} from "@/lib/tools";
-import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from "@/components/ui/breadcrumb";
-const pricingLabel: Record<Pricing, string> = {
-  free: "Free",
-  subscription: "Subscription",
-};
+import type {Tool} from "@/lib/tools";
+import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator} from "@/components/ui/breadcrumb";
+
 export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; newTools: Tool[]; relatedTools: Tool[]}) {
   const category = categories.find((item) => item.slug === tool.category);
   return (
@@ -55,12 +51,12 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
           </ul>
         </div>
       </header>
-      <section className="mt-6 w-full flex gap-6">
-        <div className="bg-white w-9/12 border border-border p-5 rounded-md flex flex-col gap-4">
+      <section className="mt-6 w-full flex flex-col lg:flex-row gap-6">
+        <div className="bg-white lg:w-9/12 border border-border p-5 rounded-md flex flex-col gap-4">
           <h2 className="font-semibold text-sm">About</h2>
           {tool.description}
         </div>
-        <div className="bg-white w-3/12 border border-border p-5 rounded-md flex flex-col gap-4">
+        <div className="bg-white lg:w-3/12 border border-border p-5 rounded-md flex flex-col gap-4">
           <h2 className="font-semibold text-sm">SIMILAR TOOLS</h2>
           {relatedTools.length === 0 ? (
             <p className="text-sm text-muted-foreground">No similar tools yet.</p>
@@ -79,9 +75,9 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
         </div>
       </section>
       <section className="mt-6 w-full flex gap-6">
-        <div className="bg-white w-9/12 border border-border p-3 rounded-md flex flex-col gap-4">
+        <div className="bg-white w-full lg:w-9/12 border border-border p-3 rounded-md flex flex-col gap-4">
           <h2 className="font-semibold text-sm pl-2">Most Recent Tools</h2>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
             {newTools.map((item) => (
               <Link
                 key={item.slug}
@@ -96,7 +92,7 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
             ))}
           </div>
         </div>
-        <div className="w-3/12"></div>
+        <div className="hidden lg:block lg:w-3/12"></div>
       </section>
     </article>
   );
