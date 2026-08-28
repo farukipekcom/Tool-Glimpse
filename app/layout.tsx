@@ -16,7 +16,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ToolGlimpse",
+  title: {
+    default: "ToolGlimpse",
+    template: "%s - ToolGlimpse",
+  },
 };
 
 export default function RootLayout({children}: LayoutProps<"/">) {

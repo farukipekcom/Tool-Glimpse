@@ -1,16 +1,21 @@
+import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {getCategoryBySlug} from "@/lib/categories";
 import {getTools} from "@/lib/tools";
 import {ToolGrid} from "@/components/tool-grid/tool-grid";
 import {CategoryFilters} from "@/components/category-filters/category-filters";
-type Filters = {
-  sub: string[];
-  pricing: string[];
-  platform: string[];
-};
+import {Filters} from "@/lib/tools";
+
 function toList(value?: string | string[]) {
   if (!value) return [];
   return (Array.isArray(value) ? value : [value]).filter(Boolean);
+}
+
+export async function generateMetadata({params}: {params: Promise<{category: string}>}): Promise<Metadata> {
+  const {category: slug} = await params;
+  const category = await getCategoryBySlug(slug);
+  if (!category) return {title: "Category"};
+  return {title: category.name};
 }
 
 export default async function CategoryPage({

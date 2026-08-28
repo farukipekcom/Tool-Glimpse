@@ -2,7 +2,11 @@ import {supabase} from "./supabase";
 
 export type Pricing = "Free" | "Paid" | "Freemium" | "One-time";
 export type Platform = "Web" | "Mac" | "Windows" | "IOS" | "Android";
-
+export type Filters = {
+  sub: string[];
+  pricing: string[];
+  platform: string[];
+};
 export type Tool = {
   slug: string;
   name: string;

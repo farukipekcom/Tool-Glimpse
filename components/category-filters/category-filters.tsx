@@ -12,13 +12,9 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
-import {ToolGrid} from "@/components/tool-grid/tool-grid";
 import {Badge} from "@/components/ui/badge";
-type Filters = {
-  sub: string[];
-  pricing: string[];
-  platform: string[];
-};
+import {Filters} from "@/lib/tools";
+
 export function CategoryFilters({slug, options, selected}: {slug: string; options: Filters; selected: Filters}) {
   const router = useRouter();
   function push(next: Filters) {
