@@ -3,7 +3,6 @@
 import {useRouter} from "next/navigation";
 import {
   Combobox,
-  ComboboxChip,
   ComboboxChips,
   ComboboxChipsInput,
   ComboboxContent,
@@ -15,22 +14,13 @@ import {
 } from "@/components/ui/combobox";
 import {ToolGrid} from "@/components/tool-grid/tool-grid";
 import {Badge} from "@/components/ui/badge";
-import type {Tool} from "@/lib/tools";
 type Filters = {
   sub: string[];
   pricing: string[];
   platform: string[];
 };
-export function CategoryFilters({slug, tools, options, selected}: {slug: string; tools: Tool[]; options: Filters; selected: Filters}) {
+export function CategoryFilters({slug, options, selected}: {slug: string; options: Filters; selected: Filters}) {
   const router = useRouter();
-
-  const visible = tools.filter((tool) => {
-    const matchSub = selected.sub.length === 0 || tool.sub_category.some((sub) => selected.sub.includes(sub));
-    const matchPricing = selected.pricing.length === 0 || tool.pricing.some((price) => selected.pricing.includes(price));
-    const matchPlatform = selected.platform.length === 0 || tool.platforms.some((platform) => selected.platform.includes(platform));
-    return matchSub && matchPricing && matchPlatform;
-  });
-
   function push(next: Filters) {
     const params = new URLSearchParams();
     for (const value of next.sub) params.append("sub", value);
@@ -65,7 +55,6 @@ export function CategoryFilters({slug, tools, options, selected}: {slug: string;
           onValueChange={(platform) => push({...selected, platform})}
         />
       </div>
-      <ToolGrid tools={visible} emptyMessage="No tools match these filters." />
     </>
   );
 }

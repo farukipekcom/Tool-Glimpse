@@ -18,7 +18,7 @@ export type Tool = {
   logo: string;
 };
 
-export async function getTools(options?: {category?: string; q?: string}) {
+export async function getTools(options?: {category?: string; q?: string; sub?: string[]; pricing?: string[]; platform?: string[]}) {
   let query = supabase().from("tools").select("*");
 
   if (options?.category) {
@@ -30,7 +30,15 @@ export async function getTools(options?: {category?: string; q?: string}) {
     const pattern = `%${q}%`;
     query = query.or(`name.ilike.${pattern},tagline.ilike.${pattern},description.ilike.${pattern}`);
   }
-
+  if (options?.sub?.length) {
+    query = query.overlaps("sub_category", options.sub);
+  }
+  if (options?.pricing?.length) {
+    query = query.overlaps("pricing", options.pricing);
+  }
+  if (options?.platform?.length) {
+    query = query.overlaps("platforms", options.platform);
+  }
   const {data, error} = await query;
   if (error) throw error;
   return (data ?? []) as Tool[];

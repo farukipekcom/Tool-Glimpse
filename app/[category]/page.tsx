@@ -1,6 +1,7 @@
 import {notFound} from "next/navigation";
 import {getCategoryBySlug} from "@/lib/categories";
 import {getTools} from "@/lib/tools";
+import {ToolGrid} from "@/components/tool-grid/tool-grid";
 import {CategoryFilters} from "@/components/category-filters/category-filters";
 type Filters = {
   sub: string[];
@@ -24,23 +25,25 @@ export default async function CategoryPage({
   const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const tools = await getTools({category: slug});
-  const options: Filters = {
-    sub: [...new Set(tools.flatMap((tool) => tool.sub_category))],
-    pricing: [...new Set(tools.flatMap((tool) => tool.pricing))],
-    platform: [...new Set(tools.flatMap((tool) => tool.platforms))],
-  };
-
   const selected: Filters = {
     sub: toList(sp.sub),
     pricing: toList(sp.pricing),
     platform: toList(sp.platform),
   };
+
+  const [allTools, tools] = await Promise.all([getTools({category: slug}), getTools({category: slug, ...selected})]);
+
+  const options: Filters = {
+    sub: [...new Set(allTools.flatMap((tool) => tool.sub_category))],
+    pricing: [...new Set(allTools.flatMap((tool) => tool.pricing))],
+    platform: [...new Set(allTools.flatMap((tool) => tool.platforms))],
+  };
   return (
     <main className="p-6 flex flex-col gap-4">
       <h1 className="text-2xl font-bold">{category.name}</h1>
       <div className="flex flex-col gap-4">
-        <CategoryFilters slug={slug} tools={tools} options={options} selected={selected} />
+        <CategoryFilters slug={slug} options={options} selected={selected} />
+        <ToolGrid tools={tools} emptyMessage={`No tools in ${category.name} yet.`} />
       </div>
     </main>
   );
