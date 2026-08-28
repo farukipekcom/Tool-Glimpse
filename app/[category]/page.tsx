@@ -1,11 +1,11 @@
 import {notFound} from "next/navigation";
-import {categories} from "@/lib/categories";
+import {getCategoryBySlug} from "@/lib/categories";
 import {getTools} from "@/lib/tools";
 import {ToolGrid} from "@/components/tool-grid/tool-grid";
 
 export default async function CategoryPage({params}: {params: Promise<{category: string}>}) {
   const {category: slug} = await params;
-  const category = categories.find((item) => item.slug === slug);
+  const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
   const tools = await getTools({category: slug});

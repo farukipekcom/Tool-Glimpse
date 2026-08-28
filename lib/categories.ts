@@ -1,26 +1,19 @@
+import {supabase} from "./supabase";
+
 export type Category = {
   slug: string;
   name: string;
   icon?: string;
 };
 
-export const categories: Category[] = [
-  {slug: "design", name: "Design", icon: "palette"},
-  {slug: "ai", name: "AI", icon: "sparkles"},
-  {slug: "no-code", name: "No-Code", icon: "blocks"},
-  {slug: "marketing", name: "Marketing", icon: "megaphone"},
-  {slug: "video", name: "Video", icon: "clapperboard"},
-  {slug: "e-commerce", name: "E-Commerce", icon: "shoppingBag"},
-  {slug: "social-media", name: "Social Mia", icon: "share2"},
-  {slug: "coding", name: "Coding", icon: "code"},
-  {slug: "writing", name: "Writing", icon: "penLine"},
-  {slug: "audio", name: "Audio", icon: "audioLines"},
-  {slug: "finance", name: "Finance", icon: "wallet"},
-  {slug: "education", name: "Education", icon: "graduationCap"},
-  {slug: "security", name: "Security", icon: "shieldCheck"},
-  {slug: "newsletter", name: "Newsletter", icon: "newspaper"},
-];
-
 export async function getCategories() {
-  return categories;
+  const {data, error} = await supabase().from("categories").select("slug, name, icon").order("name");
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function getCategoryBySlug(slug: string) {
+  const {data, error} = await supabase().from("categories").select("slug, name, icon").eq("slug", slug).maybeSingle();
+  if (error) throw error;
+  return data;
 }

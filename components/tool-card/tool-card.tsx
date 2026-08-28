@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export function ToolCard({tool}: {tool: Tool}) {
   return (
-    <article className="rounded-lg group">
-      <Link href={`/tools/${tool.slug}`} className="block relative aspect-3/2 overflow-hidden rounded-lg">
-        <Image src={tool.coverImage} alt={tool.name} width={420} height={280} className="rounded-lg size-full object-cover" />
+    <article className="rounded-lg group ">
+      <Link href={`/tools/${tool.slug}`} className="block relative overflow-hidden rounded-lg">
+        <Image src={tool.cover_image} alt={tool.name} width={420} height={280} className="rounded-lg size-full aspect-3/2" />
         <div
           className="absolute inset-0 rounded-lg bg-linear-to-t from-[#4D2297] to-[#4D229740] p-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 backdrop-blur-[2px] transition-all duration-300 text-white flex flex-col justify-end gap-2"
           aria-hidden="true">
@@ -28,9 +28,9 @@ export function ToolCard({tool}: {tool: Tool}) {
           </div>
         </div>
       </Link>
-      <div className="pt-2 flex items-center justify-between">
-        <h3 className="text-base font-medium">{tool.name}</h3>
-        <p className="text-sm">{tool.features}</p>
+      <div className="pt-2 flex items-center justify-between gap-2">
+        <h3 className="text-sm font-medium min-w-fit">{tool.name}</h3>
+        <p className="text-xs line-clamp-1">{tool.features}</p>
       </div>
     </article>
   );

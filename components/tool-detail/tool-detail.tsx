@@ -2,12 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import {ArrowUpRight} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
-import {categories} from "@/lib/categories";
+import type {Category} from "@/lib/categories";
 import type {Tool} from "@/lib/tools";
+
 import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator} from "@/components/ui/breadcrumb";
 
-export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; newTools: Tool[]; relatedTools: Tool[]}) {
-  const category = categories.find((item) => item.slug === tool.category);
+export default function ToolDetail({
+  tool,
+  category,
+  newTools,
+  relatedTools,
+}: {
+  tool: Tool;
+  category: Category | null;
+  newTools: Tool[];
+  relatedTools: Tool[];
+}) {
+  // const category = categories.find((item) => item.slug === tool.category);
   return (
     <article className="">
       <header className="bg-[#EAE4FF] border border-border rounded-md p-6">
@@ -24,7 +35,7 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
             </BreadcrumbList>
           </Breadcrumb>
           <Link
-            href={tool.websiteUrl}
+            href={tool.website_url}
             rel="noopener noreferrer"
             className="flex items-center gap-3 px-4 h-10 bg-primary rounded-full text-white font-semibold text-sm"
             target="_blank">
@@ -48,7 +59,7 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
                 {feature}
               </Badge>
             ))}
-            {tool.subCategory.map((feature) => (
+            {tool.sub_category.map((feature) => (
               <Badge variant="secondary" className="bg-white text-xs" key={feature}>
                 {feature}
               </Badge>
@@ -93,10 +104,10 @@ export default function ToolDetail({tool, newTools, relatedTools}: {tool: Tool; 
                 key={item.slug}
                 href={`/tools/${item.slug}/`}
                 className="flex items-center gap-2 rounded-md border border-transparent p-2 hover:border-border hover:bg-gray-100">
-                <Image src={item.logo} alt="" width={40} height={40} className="rounded-md" />
+                <Image src={item.logo} alt="" width={40} height={40} className="min-w-10 min-h-10 rounded-md" />
                 <div>
-                  <h4 className="text-sm font-semibold">{item.name}</h4>
-                  <p className="text-xs font-medium text-gray-500">{item.features}</p>
+                  <h4 className="text-sm font-semibold line-clamp-1">{item.name}</h4>
+                  <p className="text-xs font-medium text-gray-500 line-clamp-1">{item.features}</p>
                 </div>
               </Link>
             ))}

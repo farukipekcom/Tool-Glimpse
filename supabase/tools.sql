@@ -1,0 +1,268 @@
+-- Run this in the Supabase SQL Editor after `categories` exists.
+-- If you already created an older `tools` table, drop it first:
+-- drop table if exists tools;
+
+create table if not exists tools (
+  slug text primary key,
+  name text not null,
+  category text not null references categories (slug),
+  sub_category text[] not null default '{}',
+  website_url text not null,
+  platforms text[] not null default '{}',
+  pricing text[] not null default '{}',
+  tagline text not null default '',
+  description text not null default '',
+  features text not null default '',
+  cover_image text not null,
+  logo text not null,
+  created_at timestamptz not null default now()
+);
+
+alter table tools enable row level security;
+
+drop policy if exists "Public read tools" on tools;
+create policy "Public read tools" on tools for select using (true);
+
+-- category slug is `newsletter` (not `newsletters`) to match categories.slug
+insert into tools (
+  slug, name, category, sub_category, website_url, platforms, pricing,
+  tagline, description, features, cover_image, logo
+) values
+(
+  'beyond-ui',
+  'Beyond UI',
+  'design',
+  array['Design Systems & Kits', 'UI Kits'],
+  'https://www.beyondui.design/',
+  array['Web', 'Mac'],
+  array['Free', 'Paid'],
+  'Create AI-powered videos quickly from text.',
+  $d$Streamline your design process with 9,000+ Figma components tailored for SaaS applications. Beyond UI offers a comprehensive Figma UI kit that includes 9,000+ components, 500+ customizable sections, and templates tailored to various industries. Designed for efficiency, it supports native Figma variables and auto-layout, enabling rapid design and prototyping, complete with a built-in dark mode feature.$d$,
+  'Design Tool',
+  '',
+  ''
+),
+(
+  'doppio',
+  'Doppio',
+  'design',
+  array['Design Systems & Kits', 'UI Kits'],
+  'https://www.beyondui.design/',
+  array['Web'],
+  array['Free', 'Paid'],
+  'Create AI-powered videos quickly from text.',
+  $d$When it's time When its time to show off those perfectly pushed pixels, dont settle for deca energy.  Doppio turns your designs into motion reels impossible to ignore. Drop in your designs, pick a template, and tweak everything from composition to animation — all in the browser. No motion software or experience required.$d$,
+  'Motion Templates',
+  '',
+  ''
+),
+(
+  'motioner',
+  'Motioner',
+  'design',
+  array['Design Systems & Kits', 'UI Kits'],
+  'https://motioner.app/',
+  array['Web'],
+  array['Freemium'],
+  'Design your professional motion project easily.',
+  $d$Motioner provides a powerful workspace for motion graphics professionals, enabling them to open video frames, add layers, and keyframe properties with comprehensive control and clarity. The platform supports vector editing, auto-layout features, rich text capabilities, and offers a freemium model to get started easily.$d$,
+  'Motion Graphics Editor',
+  '',
+  ''
+),
+(
+  'supamaus',
+  'Supamaus',
+  'ai',
+  array['Automation Platforms', 'Computer Use', 'Onboarding'],
+  'https://www.supamaus.com/',
+  array['Web', 'Mac'],
+  array['Paid'],
+  'Streamline your AI interactions with gesture support.',
+  $d$SupaMaus translates user gestures and speech into valuable context for AI agents, offering a menu-bar application for macOS and an AI cursor for web integration. It captures and automates workflows effectively, ensuring faster and more intuitive user interactions.$d$,
+  'Spatial Agent Context',
+  '',
+  ''
+),
+(
+  'unlayered',
+  'Unlayered',
+  'newsletter',
+  array['Design & UX', 'Inspiration'],
+  'https://unlayered.design/',
+  array['Web'],
+  array['Free'],
+  'Discover expert insights into thumbnail creation',
+  $d$Unlayered provides a unique perspective into thumbnail design through a weekly newsletter that highlights effective workflows, showcases creative thumbnails, and discusses the art of marketing through visuals. It's perfect for designers looking to improve their skills and find inspiration.$d$,
+  'Thumbnail Design',
+  '',
+  ''
+),
+(
+  'workspaces',
+  'Workspaces',
+  'newsletter',
+  array['Design & UX', 'Inspiration'],
+  'https://www.workspaces.xyz/',
+  array['Web'],
+  array['Free'],
+  'Weekly tours of real desk setups from designers, founders, and builders. Sent every Saturday.',
+  $d$Workspaces offers a visual directory of inspiring office setups and creative workspaces. Designed for creatives, it features weekly tours of standout desks through a community-driven newsletter, encouraging users to share their own spaces while gathering inspiration from others.$d$,
+  'Desk Setup Tours',
+  '',
+  ''
+),
+(
+  'strategy-breakdowns',
+  'Strategy Breakdowns',
+  'newsletter',
+  array['Startup & Business'],
+  'https://strategybreakdowns.com/',
+  array['Web'],
+  array['Free'],
+  'Mastering business strategies succinctly delivered!',
+  $d$Strategy Breakdowns is a weekly email newsletter that curates strategic insights and business growth hacks from the world's leading companies. Targeting entrepreneurs and strategists, it aims to deliver valuable lessons that are easy to digest, allowing readers to apply what they learn directly to their business practices.$d$,
+  'Business Strategy Newsletter',
+  '',
+  ''
+),
+(
+  'daily-delights',
+  'Daily Delights',
+  'newsletter',
+  array['Design & UX', 'Design Research'],
+  'https://delights.design/',
+  array['Web'],
+  array['Free'],
+  'Discover daily curated content on art, design, and development to fuel your creativity.',
+  $d$Daily Delights is a platform where links related to art, design, and development are curated and recommended. The selection is updated daily, providing users with a continuous stream of inspiring content and resources from a variety of media.$d$,
+  'Content Curation',
+  '',
+  ''
+),
+(
+  'gallereee',
+  'Gallereee',
+  'design',
+  array['Design & UX', 'Design Research', 'Inspiration'],
+  'https://gallereee.com/',
+  array['Web'],
+  array['Free'],
+  'Discover diverse creative portfolios daily to ignite your inspiration and enhance your work.',
+  $d$Gallereee offers a centralized space for creative professionals to showcase their portfolios. The platform keeps a collection of handpicked works that are updated weekly, providing a rich source of inspiration across various fields like design, photography, and illustration. Users can subscribe to receive new portfolios directly in their inbox.$d$,
+  'Inspiration Hub',
+  '',
+  ''
+),
+(
+  'recent-design',
+  'Recent Design',
+  'design',
+  array['Design & UX', 'Design Research', 'Inspiration'],
+  'https://recent.design/',
+  array['Web'],
+  array['Free'],
+  'Discover inspiring web and interaction designs, curated to spark your creativity.',
+  $d$Recent Design is a curated platform focusing on the latest trends in web, interface, and interaction design. The site features user-submitted examples and showcases innovative designs, fostering a community around design inspiration.$d$,
+  'Design Inspiration',
+  '',
+  ''
+),
+(
+  'design-sphere',
+  'Design Sphere',
+  'design',
+  array['Design & UX'],
+  'https://designsphere.xyz/',
+  array['Web'],
+  array['Free'],
+  'Explore curated design podcasts to stay updated on trends and creativity.',
+  $d$Design Sphere offers a curated selection of podcasts centered around UX/UI, branding, motion design, graphic design, and design systems. It ensures that users can easily find and subscribe to informative and engaging content about the design industry.$d$,
+  'Design Podcasts',
+  '',
+  ''
+),
+(
+  'curation-of-curations',
+  'Curation of Curations',
+  'design',
+  array['Design & UX', 'Design Research'],
+  'https://curationofcurations.com/',
+  array['Web'],
+  array['Free'],
+  'Discover an organized hub of curated design resources to inspire creativity and insight.',
+  $d$Curation of Curations provides a comprehensive collection of curated design content including podcasts, videos, articles, and interviews. It aims to inspire designers and entrepreneurs through organized resources and insights from various aspects of the design field.$d$,
+  'Content Curation',
+  '',
+  ''
+),
+(
+  'ui-bits',
+  'UI Bits',
+  'newsletter',
+  array['Design & UX'],
+  'https://uibits.co/',
+  array['Web'],
+  array['Free'],
+  'Get curated UI design inspiration and insights delivered to your inbox weekly.',
+  $d$UI Bits offers a focused weekly newsletter aimed at designers, providing them with essential industry news, expert guidance, and inspiring content. Subscribers receive curated insights into the design world while discovering new tools and trends to keep their creative edge sharp.$d$,
+  'Design Inspiration',
+  '',
+  ''
+),
+(
+  'design-systems-for-figma',
+  'Design Systems for Figma',
+  'newsletter',
+  array['Design & UX', 'Design Systems & Kits'],
+  'https://designsystemsforfigma.com/',
+  array['Web'],
+  array['Free'],
+  'Explore a rich library of Figma design systems to elevate your product design workflow.',
+  $d$Beyond The Pixel provides a comprehensive exploration of design systems and product design. It delivers insights into current trends, practical applications, and resources tailored for design professionals and enthusiasts, maintaining an advertisement-free environment.$d$,
+  'Design Tools',
+  '',
+  ''
+),
+(
+  'saas-emails',
+  'SaaS Emails',
+  'marketing',
+  array['Email Marketing', 'Marketing & Growth'],
+  'https://saasemails.xyz/',
+  array['Web'],
+  array['Free'],
+  'Discover expertly curated SaaS email templates to elevate your marketing and onboarding efforts.',
+  $d$SaaS Emails provides curated examples of emails from leading SaaS startups, allowing businesses to find inspiration for their email communications. It features a variety of categories and offers insights into effective email strategies.$d$,
+  'Email Inspiration',
+ '',
+  ''
+),
+(
+  'h1-gallery',
+  'H1 Gallery',
+  'newsletter',
+  array[]::text[],
+  'https://h1gallery.com/',
+  array['Web'],
+  array['Free'],
+  '',
+  $d$Gallery of unique and creative H1 headers for web design inspiration.$d$,
+  'Inspiration Library',
+  '',
+  ''
+),
+(
+  'ux-tools',
+  'UX Tools',
+  'newsletter',
+  array['Design & UX', 'UI/UX Design'],
+  'https://uxtools.co/',
+  array['Web'],
+  array['Free'],
+  'Stay informed on the latest tools and trends to enhance your UX design skills.',
+  $d$UX Tools is a newsletter dedicated to providing designers with the latest insights and updates on design tools and industry trends. It analyzes emerging practices, shares deep dives into significant developments, and features interviews with leading designers, all aimed at enhancing the skills and knowledge of its readership.$d$,
+  'UX Design',
+  '',
+  ''
+);
