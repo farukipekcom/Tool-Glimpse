@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export function ToolCard({tool}: {tool: Tool}) {
   return (
-    <article className="rounded-lg group ">
-      <Link href={`/tools/${tool.slug}`} className="block relative overflow-hidden rounded-lg">
+    <article className="rounded-lg group">
+      <Link href={`/tools/${tool.slug}`} className="block relative overflow-hidden rounded-lg shadow-md shadow-gray-200 border borderbor">
         <Image src={tool.cover_image} alt={tool.name} width={420} height={280} className="rounded-lg size-full aspect-3/2" />
         <div
-          className="absolute inset-0 rounded-lg bg-linear-to-t from-[#4D2297] to-[#4D229740] p-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 backdrop-blur-[2px] transition-all duration-300 text-white flex flex-col justify-end gap-2"
+          className="absolute inset-0 rounded-lg bg-linear-to-t from-[#4D2297] to-[#4D229740] p-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 backdrop-blur-[2px] transition-all duration-300 text-white flex flex-col  justify-end gap-2"
           aria-hidden="true">
           <h3 className="text-base font-semibold">{tool.name}</h3>
           <p className="text-sm line-clamp-2 font-medium">{tool.description}</p>
