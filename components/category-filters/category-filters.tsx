@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/combobox";
 import {Badge} from "@/components/ui/badge";
 import {Filters} from "@/lib/tools";
+import {DollarSign, LayoutGrid, Monitor, MonitorSmartphone} from "lucide-react";
 
 export function CategoryFilters({slug, options, selected}: {slug: string; options: Filters; selected: Filters}) {
   const router = useRouter();
@@ -35,6 +36,7 @@ export function CategoryFilters({slug, options, selected}: {slug: string; option
           placeholder="Categories"
           countLabel="Categories"
           onValueChange={(sub) => push({...selected, sub})}
+          icon={<LayoutGrid className="w-4 h-4" />}
         />
         <FilterCombobox
           items={options.pricing}
@@ -42,6 +44,7 @@ export function CategoryFilters({slug, options, selected}: {slug: string; option
           placeholder="Pricing"
           countLabel="Pricing"
           onValueChange={(pricing) => push({...selected, pricing})}
+          icon={<DollarSign className="w-4 h-4" />}
         />
         <FilterCombobox
           items={options.platform}
@@ -49,6 +52,7 @@ export function CategoryFilters({slug, options, selected}: {slug: string; option
           placeholder="Platform"
           countLabel="Platforms"
           onValueChange={(platform) => push({...selected, platform})}
+          icon={<MonitorSmartphone className="w-4 h-4" />}
         />
       </div>
     </>
@@ -61,12 +65,14 @@ function FilterCombobox({
   placeholder,
   countLabel,
   onValueChange,
+  icon,
 }: {
   items: string[];
   value: string[];
   placeholder: string;
   countLabel: string;
   onValueChange: (next: string[]) => void;
+  icon: React.ReactNode;
 }) {
   const anchor = useComboboxAnchor();
 
@@ -76,6 +82,7 @@ function FilterCombobox({
         <ComboboxValue>
           {(values) => (
             <>
+              {icon}
               <ComboboxChipsInput className="placeholder:text-black" placeholder={values.length > 0 ? `${countLabel}` : placeholder} />
               {values.length > 0 ? <Badge className="bg-border text-black font-semibold text-xs">{values.length}</Badge> : null}
             </>

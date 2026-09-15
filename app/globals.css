@@ -8,6 +8,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: #e5e5e5;
+  --color-gradient: #18beff;
+  --color-gradient-from: #18beff30;
+  --color-gradient-to: #ffffff10;
   --font-sans: var(--font-plus-jakarta); /* body, buttons, cards */
   --font-display: var(--font-outfit); /* logo, H1 */
   --font-heading: var(--font-plus-jakarta); /* H2, H3, H4, H5, H6 */
@@ -66,8 +69,31 @@
   }
 }
 
+@property --card-wipe {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.tool-card-wash {
+  -webkit-mask-image: linear-gradient(
+    to bottom right,
+    #000 0%,
+    #000 max(0%, calc(var(--card-wipe) - 32%)),
+    transparent var(--card-wipe),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom right,
+    #000 0%,
+    #000 max(0%, calc(var(--card-wipe) - 32%)),
+    transparent var(--card-wipe),
+    transparent 100%
+  );
+  transition: --card-wipe 0.3s ease-out;
+}
+
 :root {
-  --background: #f6f7f9;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);

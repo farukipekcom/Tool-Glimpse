@@ -1,37 +1,37 @@
 import {Tool} from "@/lib/tools";
 import Image from "next/image";
-import {Badge} from "@/components/ui/badge";
-import {ExternalLink} from "lucide-react";
 import Link from "next/link";
 
 export function ToolCard({tool}: {tool: Tool}) {
   return (
     <article className="rounded-lg group">
-      <Link href={`/tools/${tool.slug}`} className="block relative overflow-hidden rounded-lg shadow-md shadow-gray-200 border borderbor">
-        <Image src={tool.cover_image} alt={tool.name} width={420} height={280} className="rounded-lg size-full aspect-3/2" />
-        <div
-          className="absolute inset-0 rounded-lg bg-linear-to-t from-[#4D2297] to-[#4D229740] p-4 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 backdrop-blur-[2px] transition-all duration-300 text-white flex flex-col  justify-end gap-2"
-          aria-hidden="true">
-          <h3 className="text-base font-semibold">{tool.name}</h3>
-          <p className="text-sm line-clamp-2 font-medium">{tool.description}</p>
-          <div className="flex items-center gap-2">
-            {tool.pricing.map((price) => (
-              <Badge key={price} className="bg-white text-xs text-black">
-                {price}
-              </Badge>
-            ))}
-            <div className="ml-auto">
-              {/* <Link href={`/tools/${tool.slug}`}> */}
-              <ExternalLink className="w-4 h-4" />
-              {/* </Link> */}
+      <Link
+        href={`/tools/${tool.slug}`}
+        className="relative flex flex-col overflow-hidden rounded-lg border-[1.5px] border-border bg-white p-6 transition-colors duration-300 hover:border-gradient">
+        <span
+          aria-hidden
+          className="tool-card-wash pointer-events-none absolute inset-0 bg-linear-to-br from-gradient-from to-gradient-to [--card-wipe:0%] group-hover:[--card-wipe:140%] group-focus-within:[--card-wipe:140%]"
+        />
+        <div className="relative z-10 flex flex-col">
+          <Image src={tool.logo} alt={tool.name} width={48} height={48} className="rounded-lg border border-border" />
+          <h2 className="mt-6 text-xl font-semibold">{tool.name}</h2>
+          <p className="mt-2 line-clamp-2 text-sm">{tool.description}</p>
+          <div className="mt-6 flex items-center justify-between gap-2">
+            <p className="line-clamp-1 rounded-[6px] border border-border group-hover:bg-white transition-all duration-300 bg-gray-50 px-2 py-0.5 font-display text-xs font-medium text-gray-800">
+              {tool.features}
+            </p>
+            <div className="flex items-center gap-1 font-display">
+              {tool.pricing.map((price) => (
+                <p
+                  key={price}
+                  className="rounded-full border border-border group-hover:bg-white transition-all duration-300 px-2 py-0.5 text-xs font-medium text-gray-800">
+                  {price}
+                </p>
+              ))}
             </div>
           </div>
         </div>
       </Link>
-      <div className="pt-2 flex items-center justify-between gap-2">
-        <h3 className="text-sm font-medium min-w-fit">{tool.name}</h3>
-        <p className="text-xs line-clamp-1">{tool.features}</p>
-      </div>
     </article>
   );
 }
