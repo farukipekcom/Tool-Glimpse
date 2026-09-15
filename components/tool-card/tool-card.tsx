@@ -5,12 +5,14 @@ import Link from "next/link";
 export function ToolCard({tool}: {tool: Tool}) {
   return (
     <article className="rounded-lg group">
-      <Link
-        href={`/tools/${tool.slug}`}
-        className="relative flex flex-col overflow-hidden rounded-lg border-[1.5px] border-border bg-white p-6 transition-colors duration-300 hover:border-gradient">
+      <Link href={`/tools/${tool.slug}`} className="relative flex flex-col overflow-hidden rounded-lg bg-white p-6">
         <span
           aria-hidden
           className="tool-card-wash pointer-events-none absolute inset-0 bg-linear-to-br from-gradient-from to-gradient-to [--card-wipe:0%] group-hover:[--card-wipe:140%] group-focus-within:[--card-wipe:140%]"
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-20 rounded-lg border border-border transition-[border-width,border-color] group-hover:border-[1.5px] group-hover:border-gradient"
         />
         <div className="relative z-10 flex flex-col">
           <Image src={tool.logo} alt={tool.name} width={48} height={48} className="rounded-lg border border-border" />
