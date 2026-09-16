@@ -9,8 +9,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: #e5e5e5;
-  --color-gradient: #18beff;
-  --color-gradient-from: #18beff30;
+  --color-gradient: #631cd6;
+  --color-gradient-from: #631cd630;
   --color-gradient-to: #ffffff10;
   --font-sans: var(--font-plus-jakarta); /* body, buttons, cards */
   --font-display: var(--font-outfit); /* logo, H1 */
@@ -110,7 +110,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #18beff;
+  --primary: #631cd6;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
