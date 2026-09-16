@@ -21,8 +21,8 @@ export default function ToolDetail({
   // const category = categories.find((item) => item.slug === tool.category);
   return (
     <article className="">
-      <header className="bg-[#EAE4FF] border border-border rounded-md p-6">
-        <div className="flex items-center gap-2 justify-between">
+      <header className="bg-white border border-border rounded-[16px] p-6">
+        <div className="flex gap-2 justify-between">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -43,9 +43,9 @@ export default function ToolDetail({
             <ArrowUpRight className="size-4" />
           </Link>
         </div>
-        <div className="flex items-center gap-3 mt-9">
+        <div className="flex items-center gap-3 mt-2">
           <div>
-            <Image src={`${tool.logo}`} alt={tool.name} className="rounded-md" width={64} height={64} />
+            <Image src={`${tool.logo}`} alt={tool.name} className="rounded-md border border-border" width={64} height={64} />
           </div>
           <div className="flex flex-col gap-1">
             <h1 className="text-2xl font-bold">{tool.name}</h1>
@@ -53,31 +53,31 @@ export default function ToolDetail({
           </div>
         </div>
         <div className="mt-6">
-          <ul className="flex items-center gap-2">
+          <ul className="flex items-center gap-1">
             {tool.pricing.map((feature) => (
-              <Badge variant="secondary" className="bg-white text-xs" key={feature}>
+              <Badge variant="secondary" className="bg-white text-xs border border-border  px-2.5 py-2" key={feature}>
                 {feature}
               </Badge>
             ))}
             {tool.sub_category.map((feature) => (
-              <Badge variant="secondary" className="bg-white text-xs" key={feature}>
+              <Badge variant="secondary" className="bg-white text-xs border border-border  px-2.5 py-2" key={feature}>
                 {feature}
               </Badge>
             ))}
             {tool.platforms.map((feature) => (
-              <Badge variant="secondary" className="bg-white text-xs" key={feature}>
+              <Badge variant="secondary" className="bg-white text-xs border border-border  px-2.5 py-2" key={feature}>
                 {feature}
               </Badge>
             ))}
           </ul>
         </div>
       </header>
-      <section className="mt-6 w-full flex flex-col lg:flex-row gap-6">
-        <div className="bg-white lg:w-9/12 border border-border p-5 rounded-md flex flex-col gap-4">
+      <section className="mt-6 w-full flex flex-col  lg:flex-row gap-6">
+        <div className="bg-white lg:w-9/12 border border-border p-5 rounded-[16px] flex flex-col gap-4">
           <h2 className="font-semibold text-sm">About</h2>
-          <div dangerouslySetInnerHTML={{__html: tool.description}} className="flex flex-col gap-2" />
+          <div dangerouslySetInnerHTML={{__html: tool.description}} className="custom-text flex flex-col gap-2" />
         </div>
-        <div className="bg-white lg:w-3/12 border border-border p-5 rounded-md flex flex-col gap-4">
+        <div className="bg-white lg:w-3/12 border border-border p-5 rounded-[16px] flex flex-col gap-4">
           <h2 className="font-semibold text-sm">SIMILAR TOOLS</h2>
           {relatedTools.length === 0 ? (
             <p className="text-sm text-muted-foreground">No similar tools yet.</p>
@@ -96,7 +96,7 @@ export default function ToolDetail({
         </div>
       </section>
       <section className="mt-6 w-full flex gap-6">
-        <div className="bg-white w-full lg:w-9/12 border border-border p-3 rounded-md flex flex-col gap-4">
+        <div className="bg-white w-full lg:w-9/12 border border-border p-3 rounded-[16px] flex flex-col gap-4">
           <h2 className="font-semibold text-sm pl-2">Most Recent Tools</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4">
             {newTools.map((item) => (
