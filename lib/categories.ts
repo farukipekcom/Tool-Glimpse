@@ -17,7 +17,7 @@ export async function getCategories() {
       icon: row.icon,
       count: row.tools[0]?.count ?? 0,
     }))
-    .filter((category) => category.count > 0);
+    .filter((category) => category.count > -1);
 }
 
 export async function getCategoryBySlug(slug: string) {

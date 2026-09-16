@@ -7,7 +7,8 @@ import {cn} from "@/lib/utils";
 import {CategoryIcon} from "./category-icon";
 import {Badge} from "../ui/badge";
 
-const linkClass = "flex w-full h-8 min-w-fit items-center gap-1 rounded-sm px-2 py-1 text-sm hover:bg-[#F5F5F5] justify-between";
+const linkClass =
+  "flex w-full h-8 min-w-fit items-center gap-1 group rounded-sm px-2 text-sm border-transparent hover:border-border border hover:bg-hover justify-between";
 
 export function CategoryNavLinks({categories}: {categories: Category[]}) {
   const pathname = usePathname().replace(/\/$/, "") || "/";
@@ -20,13 +21,15 @@ export function CategoryNavLinks({categories}: {categories: Category[]}) {
           <li key={category.slug} className="w-full">
             <Link
               href={isActive ? "/" : `/${category.slug}`}
-              className={cn(linkClass, isActive && "bg-[#E3E3E3] hover:bg-[#E3E3E3]")}
+              className={cn(linkClass, isActive && "bg-hover border border-border hover:bg-hover")}
               aria-current={isActive ? "page" : undefined}>
               <span className="flex items-center gap-3">
                 {category.icon ? <CategoryIcon name={category.icon} className="size-4 shrink-0" /> : null}
                 {category.name}
               </span>
-              <Badge className="bg-gray-100 text-gray-500 text-xs">{category.count}</Badge>
+              <Badge className="bg-hover text-[#727272] border border-border group-hover:border group-hover:border-border text-xs">
+                {category.count}
+              </Badge>
             </Link>
           </li>
         );
