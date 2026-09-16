@@ -43,7 +43,7 @@ export default function ToolDetail({
             <ArrowUpRight className="size-4" />
           </Link>
         </div>
-        <div className="flex items-center gap-3 mt-2">
+        <div id="tool-hero" className="flex items-center gap-3 mt-2">
           <div>
             <Image src={`${tool.logo}`} alt={tool.name} className="rounded-md border border-border" width={64} height={64} />
           </div>

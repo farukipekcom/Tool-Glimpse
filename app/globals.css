@@ -106,6 +106,161 @@
   transition: --card-wipe 0.3s ease-out;
 }
 
+@keyframes topbar-logo-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-22px) scale(0.45) rotate(-18deg);
+    filter: blur(8px);
+  }
+  58% {
+    opacity: 1;
+    transform: translateX(3px) scale(1.08) rotate(4deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes topbar-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(6px);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes topbar-btn-in {
+  0% {
+    opacity: 0;
+    transform: translateX(28px) scale(0.82);
+    filter: blur(4px);
+  }
+  72% {
+    opacity: 1;
+    transform: translateX(-4px) scale(1.04);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes topbar-sheen {
+  from {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes topbar-line {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.topbar-idle {
+  transform-origin: left center;
+  transition:
+    opacity 0.32s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.32s ease;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-idle {
+  opacity: 0;
+  transform: translateY(-14px) scale(0.86);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.topbar-compact {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-compact {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-logo {
+  animation: topbar-logo-in 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-copy {
+  animation: topbar-copy-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-btn {
+  animation: topbar-btn-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+}
+
+.topbar-sheen {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  opacity: 0;
+}
+
+.topbar-tool[data-stuck="true"] .topbar-sheen {
+  opacity: 1;
+  animation: topbar-sheen 0.7s ease 0.28s both;
+}
+
+header.sticky[data-tool-stuck] {
+  box-shadow: 0 12px 28px -18px rgb(99 28 214 / 0.45);
+}
+
+header.sticky[data-tool-stuck]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  transform-origin: center;
+  background: linear-gradient(90deg, transparent 5%, var(--color-gradient) 50%, transparent 95%);
+  animation: topbar-line 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar-idle,
+  .topbar-compact,
+  .topbar-logo,
+  .topbar-copy,
+  .topbar-btn,
+  .topbar-sheen,
+  header.sticky[data-tool-stuck],
+  header.sticky[data-tool-stuck]::after {
+    animation: none !important;
+    transition: opacity 0.15s ease !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
 :root {
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

@@ -23,7 +23,7 @@ export default async function ToolPage({params}: {params: Promise<{slug: string}
 
   return (
     <>
-      <Topbar title={tool.name} />
+      <Topbar tool={tool} />
       <main className="p-6">
         <ToolDetail tool={tool} category={category} newTools={newTools} relatedTools={relatedTools} />
       </main>
