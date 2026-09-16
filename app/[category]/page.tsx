@@ -4,6 +4,7 @@ import {getCategoryBySlug} from "@/lib/categories";
 import {getTools} from "@/lib/tools";
 import {ToolGrid} from "@/components/tool-grid/tool-grid";
 import {CategoryFilters} from "@/components/category-filters/category-filters";
+import {Topbar} from "@/components/topbar/topbar";
 import {Filters} from "@/lib/tools";
 
 function toList(value?: string | string[]) {
@@ -44,12 +45,16 @@ export default async function CategoryPage({
     platform: [...new Set(allTools.flatMap((tool) => tool.platforms))],
   };
   return (
-    <main className="p-6 flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">{category.name}</h1>
-      <div className="flex flex-col gap-4">
-        <CategoryFilters slug={slug} options={options} selected={selected} />
-        <ToolGrid tools={tools} emptyMessage={`No tools in ${category.name} yet.`} />
-      </div>
-    </main>
+    <div className="">
+      <Topbar title={category.name} />
+      <main className="flex flex-col gap-4">
+        <div className="bg-white h-[68px] items-center px-6 hidden md:flex">
+          <CategoryFilters slug={slug} options={options} selected={selected} />
+        </div>
+        <div className="p-6">
+          <ToolGrid tools={tools} emptyMessage={`No tools in ${category.name} yet.`} />
+        </div>
+      </main>
+    </div>
   );
 }

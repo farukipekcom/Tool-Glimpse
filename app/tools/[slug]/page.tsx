@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import ToolDetail from "@/components/tool-detail/tool-detail";
+import {Topbar} from "@/components/topbar/topbar";
 import {getCategoryBySlug} from "@/lib/categories";
 import {getRelatedTools, getNewTools, getToolBySlug} from "@/lib/tools";
 
@@ -21,8 +22,11 @@ export default async function ToolPage({params}: {params: Promise<{slug: string}
   const newTools = await getNewTools(tool.slug, 12);
 
   return (
-    <main className="p-6">
-      <ToolDetail tool={tool} category={category} newTools={newTools} relatedTools={relatedTools} />
-    </main>
+    <>
+      <Topbar title={tool.name} />
+      <main className="p-6">
+        <ToolDetail tool={tool} category={category} newTools={newTools} relatedTools={relatedTools} />
+      </main>
+    </>
   );
 }
