@@ -1,16 +1,12 @@
 import type {Metadata} from "next";
-import {Outfit, Plus_Jakarta_Sans} from "next/font/google";
+import {Inter} from "next/font/google";
 import "./globals.css";
 import {Sidebar} from "@/components/sidebar/sidebar";
 import {cn} from "@/lib/utils";
 import Footer from "@/components/footer/footer";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -23,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: LayoutProps<"/">) {
   return (
-    <html lang="en" className={cn("antialiased", outfit.variable, plusJakarta.variable)}>
+    <html lang="en" className={cn("antialiased", inter.variable)}>
       <body className="min-h-dvh flex">
         <Sidebar />
         <div className="flex min-w-0 lg:ml-68 flex-1 flex-col">
