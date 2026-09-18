@@ -15,7 +15,7 @@ import {
 import {InputGroup, InputGroupAddon, InputGroupInput} from "@/components/ui/input-group";
 import {Badge} from "@/components/ui/badge";
 import {Filters} from "@/lib/tools";
-import {DollarSign, LayoutGrid, Monitor, MonitorSmartphone, SearchIcon} from "lucide-react";
+import {DollarSign, LayoutGrid, Monitor, MonitorSmartphone, SearchIcon, Tag, Tags} from "lucide-react";
 
 export function CategoryFilters({slug, options, selected}: {slug: string; options: Filters; selected: Filters}) {
   const router = useRouter();
@@ -45,7 +45,7 @@ export function CategoryFilters({slug, options, selected}: {slug: string; option
           placeholder="Pricing"
           countLabel="Pricing"
           onValueChange={(pricing) => push({...selected, pricing})}
-          icon={<DollarSign className="w-4 h-4 text-input-text" />}
+          icon={<Tags className="w-4 h-4 text-input-text" />}
         />
         <FilterCombobox
           items={options.platform}

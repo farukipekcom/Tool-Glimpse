@@ -23,7 +23,7 @@ export function ToolHeading({tool}: {tool: Pick<Tool, "name" | "logo" | "tagline
   }, []);
 
   useEffect(() => {
-    const header = document.querySelector("header.sticky");
+    const header = document.querySelector("header.fixed");
     if (!header) return;
     header.toggleAttribute("data-tool-stuck", stuck);
     return () => header.removeAttribute("data-tool-stuck");

@@ -229,11 +229,11 @@
   animation: topbar-sheen 0.7s ease 0.28s both;
 }
 
-header.sticky[data-tool-stuck] {
+header.fixed[data-tool-stuck] {
   box-shadow: 0 12px 28px -18px rgb(99 28 214 / 0.45);
 }
 
-header.sticky[data-tool-stuck]::after {
+header.fixed[data-tool-stuck]::after {
   content: "";
   position: absolute;
   right: 0;
@@ -252,8 +252,8 @@ header.sticky[data-tool-stuck]::after {
   .topbar-copy,
   .topbar-btn,
   .topbar-sheen,
-  header.sticky[data-tool-stuck],
-  header.sticky[data-tool-stuck]::after {
+  header.fixed[data-tool-stuck],
+  header.fixed[data-tool-stuck]::after {
     animation: none !important;
     transition: opacity 0.15s ease !important;
     filter: none !important;
